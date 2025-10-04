@@ -36,7 +36,7 @@
     <h3>Create an UI with functions as below
     </h3>
     <img src="./../images/exercise_01.png">
-    </p>
+    
     <ul>
         <li>'Add': to add new input first name and last name as new record in table
         </li>
@@ -49,7 +49,38 @@
     </p>
 
     <h2>Your solution for exercise</h2>
-
+    <input type="text" id="firstName" placeholder="First Name">
+    <input type="text" id="lastName" placeholder="Last Name" >
+    <input id="add" type="button" value="Add" onclick="add()">
+    <input id="resetInput" type="button" value="Reset Input" onclick="resetInput()">
+    <input id="resetTable" type="button" value="Reset Table" onclick="resetTable()">
+    <br>
+    <table>
+        <br>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Waytid</td>
+                <td>Kaewprajun</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        function resetInput() {
+            document.getElementById('firstName').value = '';
+            document.getElementById('lastName').value = '';
+        }
+        function add() {
+            let firstName = document.getElementById('firstName').value;
+            let lastName = document.getElementById('lastName').value;
+            
+        }
+    </script>
 </body>
 
 </html>

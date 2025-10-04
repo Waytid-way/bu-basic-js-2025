@@ -47,6 +47,69 @@
 
     <h3>Your solution for assignment</h3>
 
-</body>
+    <input type="text" id="todo" placeholder="Batman Quest">
+    <input type="button" id="add" value="Add" onclick="add()">
+    <input type="button" id="clear" value="Clear" onclick="clearAll()">
+    
+    <ul id="todoList"></ul>
 
-</html>
+</body>
+<script>
+    function add() {
+        // ดึงค่าจาก input
+        const todoInput = document.getElementById('todo');
+        const todoText = todoInput.value.trim();
+        
+        // ตรวจสอบว่ามีข้อความหรือไม่
+        if (todoText === '') {
+            alert('กรุณาใส่ข้อความที่ต้องการทำ');
+            return;
+        }
+        
+        // สร้าง element ใหม่สำหรับ todo item
+        const todoList = document.getElementById('todoList');
+        const li = document.createElement('li');
+        
+        // สร้าง checkbox
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.onchange = function() {
+            if (this.checked) {
+                li.classList.add('completed');
+            } else {
+                li.classList.remove('completed');
+            }
+        };
+        
+        // สร้าง text node สำหรับข้อความ
+        const textNode = document.createTextNode(' ' + todoText);
+        
+        // เพิ่ม checkbox และข้อความเข้าไปใน li
+        li.appendChild(checkbox);
+        li.appendChild(textNode);
+        
+        // เพิ่ม li เข้าไปใน todoList
+        todoList.appendChild(li);
+        
+        // ล้าง input
+        todoInput.value = '';
+    }
+    
+    function clearAll() {
+        // ลบ todo items ทั้งหมด
+        const todoList = document.getElementById('todoList');
+        todoList.innerHTML = '';
+    }
+</script>
+<link rel="stylesheet" href="./../contents/js_gfd.css">
+<label>
+  <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()">
+  I am Batman 
+</label>
+<script>
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+  }
+</script>
+</body>
+  </html>
