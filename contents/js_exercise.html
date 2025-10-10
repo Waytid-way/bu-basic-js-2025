@@ -50,13 +50,12 @@
 
     <h2>Your solution for exercise</h2>
     <input type="text" id="firstName" placeholder="First Name">
-    <input type="text" id="lastName" placeholder="Last Name" >
+    <input type="text" id="lastName" placeholder="Last Name">
     <input id="add" type="button" value="Add" onclick="add()">
     <input id="resetInput" type="button" value="Reset Input" onclick="resetInput()">
     <input id="resetTable" type="button" value="Reset Table" onclick="resetTable()">
     <br>
     <table>
-        <br>
         <thead>
             <tr>
                 <th>First Name</th>
@@ -76,10 +75,28 @@
             document.getElementById('lastName').value = '';
         }
         function add() {
-            let firstName = document.getElementById('firstName').value;
-            let lastName = document.getElementById('lastName').value;
-            
+            let firstName = document.getElementById('firstName').value.trim();
+            let lastName = document.getElementById('lastName').value.trim();
+            if (firstName === '' || lastName === '') {
+                alert('Please enter first name and last name.');
+                return;
+            }
+            let tbody = document.querySelector('table tbody');
+            let newRow = document.createElement('tr');
+            let tdFirstName = document.createElement('td');
+            tdFirstName.textContent = firstName;
+            let tdLastName = document.createElement('td');
+            tdLastName.textContent = lastName;
+            newRow.appendChild(tdFirstName);
+            newRow.appendChild(tdLastName);
+            tbody.appendChild(newRow);
+            resetInput();
         }
+        function resetTable() {
+            let tbody = document.querySelector('table tbody');
+            tbody.innerHTML = '';
+        }
+    </script>
     </script>
 </body>
 
